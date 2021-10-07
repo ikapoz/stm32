@@ -1,0 +1,8 @@
+[
+    {
+        "name": "GNU ARM",
+        "toolchainFile": "${workspaceFolder}\\cmake\\toolchain.cmake",
+        "preferredGenerator": {"name": "Unix Makefiles" },
+        "environmentVariables": {"PATH": "${env:PATH};${workspaceFolder}\\..\\..\\tools\\make\\" }
+    }
+]

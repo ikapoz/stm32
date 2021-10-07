@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"stm32f1xx_ll_dma.h": "c",
+			"stm32f1xx_hal.h": "c",
+			"cstddef": "cpp"
+		}
+	}
+}

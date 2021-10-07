@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start GDB server",
+            "command": "dotnet run --project \"${workspaceFolder}\\scripts\\Scripts.csproj\" -- gdbserver",
+            "type": "shell",
+        },
+        {
+            "label": "delete build",
+            "command": "dotnet run --project \"${workspaceFolder}\\scripts\\Scripts.csproj\" -- clean",
+            "type": "shell",
+        },
+        {
+            "label": "initialize",
+            "command": "dotnet run --project \"${workspaceFolder}\\scripts\\Scripts.csproj\" -- initialize",
+            "type": "shell",
+        },
+        {
+            "label": "Build Debug",
+            "command": "dotnet run --project \"${workspaceFolder}\\scripts\\Scripts.csproj\" -- cmake --parallel 1 --target debug",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Build Release",
+            "command": "dotnet run --project \"${workspaceFolder}\\scripts\\Scripts.csproj\" -- cmake --target release",
+            "type": "shell",
+            "group": "build"
+        }
+    ]
+}

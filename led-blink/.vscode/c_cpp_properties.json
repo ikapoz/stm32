@@ -1,0 +1,50 @@
+{
+    "env": {
+        "gccIncludePath": "${workspaceFolder}/../../tools/gcc/arm-none-eabi/include",
+        "cubemx_includes": [
+            "src/Drivers/CMSIS/Device/ST/STM32F1xx/Include/",
+            "src/Drivers/CMSIS/Include/",
+            "src/Drivers/STM32F1xx_HAL_Driver/Inc",
+            "src/Drivers/**"
+        ],
+        "cubemx_defines": [
+            "USE_FULL_LL_DRIVER",
+            "STM32F103xB"
+        ]
+    },
+    "configurations": [
+        {
+            "name": "STM32F103 DEBUG",
+            "intelliSenseMode": "windows-gcc-x64",
+            "includePath": [
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/src/pie/mcu/stm32f1",
+                "${gccIncludePath}/**",
+                "${cubemx_includes}",
+                "${workspaceFolder}/src/Drivers/STM32F1xx_HAL_Driver/Inc",
+                "${workspaceFolder}/src/**"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/src/pie",
+                    "${gccIncludePath}",
+                    "${cubemx_includes}",
+                    "${workspaceFolder}/src/Drivers/STM32F1xx_HAL_Driver/Inc",
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": false
+            },
+            "defines": [
+                "DEBUG",
+                "${cubemx_defines}",
+                "USE_FULL_ASSERT"
+            ],
+            "cppStandard": "gnu++20",
+            "cStandard": "c11",
+            "compilerPath": "${workspaceFolder}/../../tools/gcc/bin/arm-none-eabi-gcc.exe",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}

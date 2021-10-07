@@ -1,32 +1,90 @@
-# Prerequisites
-*.d
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+#Visual Studio Code files
+#.vscode/
 
-# Precompiled Headers
-*.gch
+#Visual Studio files
+.vs/
+*.[Oo]bj
+*.user
+*.aps
 *.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+ipch/
+[Oo]bj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+#MonoDevelop
+*.pidb
+*.userprefs
 
-# Fortran module files
-*.mod
-*.smod
+#Tooling
+_ReSharper*/
+*.resharper
+[Tt]est[Rr]esult*
+*.sass-cache
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+#Project files
+[Bb]uild/
+[Tt]esting/
+*.tmp_proj
 
-# Executables
-*.exe
-*.out
-*.app
+#Subversion files
+.svn
+
+# Office Temp Files
+~$*
+
+# vim Temp Files
+*~
+
+#NuGet
+packages/
+*.nupkg
+
+#ncrunch
+*ncrunch*
+*crunch*.local.xml
+
+# visual studio database projects
+*.dbmdl
+
+#Test files
+*.testsettings
+
+*.vspx
+UpgradeLog.htm
+
+Telerik_UI_for_WPF_Source/Binaries/**
+TDSP.VC.opendb
+/TDSP.VC.VC.opendb
+/TDSP.VC.db
+SoundJarBundle/Resource/SQLEXPRADV_x86_ENU.exe
+SoundJarBundle/Resource/dotnetfx35setup.exe
+SoundJarBundle/Resource/SQLEXPRADV_x64_ENU.exe
+Telerik_UI_for_WPF_Source/Binaries/WPF45/Dev/*
+
+# ignore STM32CubeMX files
+.cproject
+.project
+.mxproject

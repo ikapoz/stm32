@@ -1,0 +1,52 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Windows Debug",
+            "type": "gdb",
+            "request": "attach",
+            "executable": "${workspaceFolder}\\build\\main",
+            "target": ":61234",
+            "remote": true,
+            "gdbpath": "${workspaceFolder}\\..\\..\\tools\\gcc\\bin\\arm-none-eabi-gdb.exe",
+            "cwd": "${workspaceRoot}",
+            "valuesFormatting": "parseText",
+            "autorun": [
+                // "# Set flash parallelism mode to 32, 16, or 8 bit when using STM32 F2F4 microcontrollers",
+                // "# 2=32 bit, 1=16 bit and 0=8 bit parallelism mode",
+                // "monitor flash set_parallelism_mode 2",
+                // "# Reset to known state",
+                // "monitor reset",
+                // "# Load the program executable",
+                "load"
+            ],
+            "preLaunchTask": "Start GDB server"
+        },
+        {
+            "name": "Linux Debug",
+            "type": "gdb",
+            "request": "attach",
+            "executable": "${workspaceFolder}\\build\\main",
+            "target": ":61234",
+            "remote": true,
+            "gdbpath": "${workspaceFolder}\\..\\..\\tools\\gcc\\bin\\arm-none-eabi-gdb",
+            "cwd": "${workspaceRoot}",
+            "valuesFormatting": "parseText",
+            "autorun": [
+                // "# Set flash parallelism mode to 32, 16, or 8 bit when using STM32 F2F4 microcontrollers",
+                // "# 2=32 bit, 1=16 bit and 0=8 bit parallelism mode",
+                // "monitor flash set_parallelism_mode 2",
+                // "# Reset to known state",
+                // "monitor reset",
+                // "# Load the program executable",
+                "load"
+            ],
+            "preLaunchTask": "Start GDB server"
+        }
+
+
+    ]
+}
