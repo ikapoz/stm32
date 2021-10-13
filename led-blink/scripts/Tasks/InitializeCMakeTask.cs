@@ -42,7 +42,7 @@ namespace Scripts.Tasks
                     zipStream.ExtractToDirectory(tempFolder, true);
                     var srcPath = Path.Combine(tempFolder, cmakeFolderName);
                     var dstPath = projectOptions.Tools.CMake.GetFullPath(projectOptions.ToolsPath);
-                    logger.LogInformation($"Coping {cmakeFolderName} binaries to {dstPath}.");
+                    logger.LogInformation($"Copying {cmakeFolderName} binaries to {dstPath}.");
                     Directory.Move(srcPath, dstPath);
                     result = true;
                 }else if (OperatingSystem.IsLinux())
@@ -61,7 +61,7 @@ namespace Scripts.Tasks
                     var cmd = "mv";
                     var arugments = $"-v \"{srcPath}\"  \"{dstPath}\" ";
 
-                    logger.LogInformation($"Coping {cmakeFolderName} binaries to {dstPath}.");
+                    logger.LogInformation($"Copying {cmakeFolderName} binaries to {dstPath}.");
                     using var task = new CmdTask(cmd, arugments, srcPath, true, true);
                     result = await task.ExecuteAsync(logger);
                     if (!result)

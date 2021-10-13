@@ -43,7 +43,7 @@ namespace Scripts.Tasks
                     zipStream.ExtractToDirectory(tempFolder, true);
                     var srcPath = Path.Combine(tempFolder, gnuArmFolderName);
                     var dstPath = projectOptions.Tools.GCC.GetFullPath(projectOptions.ToolsPath);
-                    logger.LogInformation($"Coping {gnuArmFolderName} binaries to {dstPath}.");
+                    logger.LogInformation($"Copying {gnuArmFolderName} binaries to {dstPath}.");
                     Directory.Move(srcPath, dstPath);
                     result = true;
                 }
@@ -66,7 +66,7 @@ namespace Scripts.Tasks
                     var cmd = "mv";
                     var arugments = $"-v \"{srcPath}\"  \"{dstPath}\" ";
 
-                    logger.LogInformation($"Coping {gnuArmFolderName} binaries to {dstPath}.");
+                    logger.LogInformation($"Copying {gnuArmFolderName} binaries to {dstPath}.");
                     using var task = new CmdTask(cmd, arugments, srcPath, true, true);
                     result = await task.ExecuteAsync(logger);
                     if (!result)

@@ -27,6 +27,12 @@ var logger = loggerFactory.CreateLogger(">");
 try
 {
     logger.LogInformation("Initializing");
+    if(System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture != System.Runtime.InteropServices.Architecture.X64)
+    {
+        logger.LogWarning("This works only for x64 architecture.");
+        return;
+    }
+
     var projectOptionsResult = await GetProjectOptions(logger);
     if (!projectOptionsResult.Success)
         return;
@@ -104,7 +110,7 @@ async Task<Result<ProjectOptions>> GetProjectOptions(ILogger logger)
         // using var reader = new StreamReader(optionsPath);
         using var reader = File.OpenRead(optionsPath);
         var baseProjOptions = await JsonSerializer.DeserializeAsync<ProjectOptions>(reader);
-        var baseProjectPath = Path.GetFullPath(Path.Combine(execPath, @"..\..\..\.."));
+        var baseProjectPath = Path.GetFullPath(Path.Combine(execPath, @"../../../.."));
         if (baseProjOptions != null)
         {
             var toolsPath = Path.GetFullPath(Path.Combine(baseProjectPath, baseProjOptions.ToolsPath));
@@ -168,7 +174,7 @@ internal class Tools
     public ToolInfo Stm32Tools => stm32Tools;
     public ToolInfo GDB => gdbServer;
 
-    private ToolInfo make = new ToolInfo("make", "gnumake", "make", ".");
+    private ToolInfo make = new ToolInfo("make", "make", "make", ".");
     private ToolInfo cmake = new ToolInfo("cmake", "cmake", "cmake", "bin");
     private ToolInfo gcc = new ToolInfo("gcc", "", "gcc", @"bin");
     private ToolInfo stm32Tools = new ToolInfo("stm32tools", "", "stm32-tools", "bin");

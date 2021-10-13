@@ -65,7 +65,7 @@ namespace Scripts.Tasks
                         return result;
 
                     var destPath = projectOptions.Tools.Make.GetFullPath(projectOptions.ToolsPath);
-                    logger.LogInformation($"Coping {makeFolderName} binaries to {destPath}.");
+                    logger.LogInformation($"Copying {makeFolderName} binaries to {destPath}.");
                     Directory.Move(buildPath, destPath);
 
                     var gnumakeFileName = "gnumake";
