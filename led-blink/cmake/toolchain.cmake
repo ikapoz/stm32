@@ -8,20 +8,29 @@ else()
     set(CMAKE_EXE_LINKER_FLAGS_INIT "--specs=nosys.specs")
 endif()
 
+if(WIN32)
+    set(ARM_BIN_EXT ".exe")
+elseif(LINUX)
+    set(ARM_BIN_EXT "")
+else()
+    get_filename_component(TOOLCHAIN_DIR "cmake"  ABSOLUTE)
+    message(FATAL_ERROR "OS not supported. TOOLCHAIN_DIR: ${TOOLCHAIN_DIR}")
+endif()
+
 # path to C and CXX
 set(ENV{ARM_PREFIX} "arm-none-eabi-" )
-get_filename_component(ARMCC_DIR "../../tools/gcc"  ABSOLUTE)
+get_filename_component(ARMCC_DIR "../../../../tools/gcc"  ABSOLUTE)
 message(STATUS "ARMCC_DIR: ${ARMCC_DIR}")
 set(TOOLCHAIN_BIN_DIR "${ARMCC_DIR}/bin")
 
 
-set(CMAKE_C_COMPILER      "${TOOLCHAIN_BIN_DIR}/$ENV{ARM_PREFIX}gcc")
-set(CMAKE_CXX_COMPILER    "${TOOLCHAIN_BIN_DIR}/$ENV{ARM_PREFIX}g++")
-set(CMAKE_ASM_COMPILER    "${TOOLCHAIN_BIN_DIR}/$ENV{ARM_PREFIX}g++")
+set(CMAKE_C_COMPILER      "${TOOLCHAIN_BIN_DIR}/$ENV{ARM_PREFIX}gcc${ARM_BIN_EXT}")
+set(CMAKE_CXX_COMPILER    "${TOOLCHAIN_BIN_DIR}/$ENV{ARM_PREFIX}g++${ARM_BIN_EXT}")
+set(CMAKE_ASM_COMPILER    "${TOOLCHAIN_BIN_DIR}/$ENV{ARM_PREFIX}g++${ARM_BIN_EXT}")
 
-set(CMAKE_OBJCOPY         "${TOOLCHAIN_BIN_DIR}/$ENV{ARM_PREFIX}objcopy")
-set(CMAKE_SIZE_UTIL       "${TOOLCHAIN_BIN_DIR}/$ENV{ARM_PREFIX}size")
-set(CMAKE_OBJDUMP         "${TOOLCHAIN_BIN_DIR}/$ENV{ARM_PREFIX}objdump")
+set(CMAKE_OBJCOPY         "${TOOLCHAIN_BIN_DIR}/$ENV{ARM_PREFIX}objcopy${ARM_BIN_EXT}")
+set(CMAKE_SIZE_UTIL       "${TOOLCHAIN_BIN_DIR}/$ENV{ARM_PREFIX}size$ARM_BIN_EXT}")
+set(CMAKE_OBJDUMP         "${TOOLCHAIN_BIN_DIR}/$ENV{ARM_PREFIX}objdump${ARM_BIN_EXT}")
 
 set(CMAKE_SYSROOT "${ARMCC_DIR}/arm-none-eabi")
 set(CMAKE_FIND_ROOT_PATH "${ARMCC_DIR}/arm-none-eabi")
